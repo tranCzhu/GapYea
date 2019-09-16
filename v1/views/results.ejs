@@ -1,0 +1,20 @@
+<% include partials/header %>
+
+<!-- bug: when user enters "" or "someScramblewords", data returned is not an array but an object of 404 error -->
+<% data.forEach(function(entry) { %>
+    <div>
+        <%= entry["name"] %>
+        <ul>
+            <li>Capital: <a href="/r/<%= entry["capital"] %>"><%= entry["capital"] %></a></li>
+            <li>Region: <%= entry["subregion"] %></li>
+            <li>Language(s):</li>
+                <ul>
+                    <% entry.languages.forEach(function(language) { %>
+                        <li><%= language["name"] %></li>
+                    <% }); %>
+                </ul>
+        </ul>
+    </div>
+<% }); %>
+
+<% include partials/footer %>

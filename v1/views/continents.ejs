@@ -1,0 +1,10 @@
+<% include partials/header %>
+
+<% continents.forEach(function(c) { %>
+    <div>
+        <%= c.name %>
+        <img src="<%= c.image %>" alt="cannot display" width="320px" height="213px">
+    </div>
+<% }); %>
+
+<% include partials/footer %>
