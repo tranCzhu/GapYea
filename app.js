@@ -8,7 +8,7 @@ app.get("/", function(req, res) {
     res.render("search");
 });
 
-// deployment won't work now because of lack of api key, find way to hide api key first
+// deployment will work if API key is inserted
 
 // Search (v1 only supports search of a country or city)
 app.get("/results", function(req, res) {
@@ -30,7 +30,7 @@ app.get("/results", function(req, res) {
 
 app.get("/r/:city", function(req, res) {
     var city = req.params.city;
-    var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + req.params.city + "&key=AIzaSyAAco7w27d3rElP3dM8BT8GbA1_ncgv_p4"
+    var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + req.params.city + "&key=";
     request(url, function(error, response, body) {
         if (!error && res.statusCode == 200) {
             var cityData = JSON.parse(body).results[0];

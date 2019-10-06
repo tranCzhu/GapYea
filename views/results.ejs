@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Gap Yea!</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/css/results.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <!-- bug: forEach cannot be used on single result, only valid for multiple results -->
+        <!-- bug: when user enters "" or "someScramblewords", data returned is not an array but an object of 404 error -->
+            <div class="container">
+                <div class="row">
+                    <% data.forEach(function(entry) { %>
+                        <div class="card col-lg-3 col-md-4 col-sm-6">
+                            <img src="https://static.scientificamerican.com/blogs/cache/file/94F6C309-D83C-4982-99DB682A42B0ABA0_source.jpg?w=590&h=800&3CC992B4-0893-4276-847B101B5677329A" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= entry["name"] %></h5>
+                                <p class="card-text">
+                                    <div>Capital: <a href="/r/<%= entry["capital"] %>"><%= entry["capital"] %></a></div>
+                                    <div>Region: <%= entry["subregion"] %></div>
+                                    <div>
+                                        Language(s): <% entry.languages.forEach(function(language) { %>
+                                        <li><%= language["name"] %></li>
+                                        <% }); %>
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+
+<% include partials/footer %>
