@@ -1,5 +1,4 @@
 body {
-    background-image: url("https://static.scientificamerican.com/blogs/cache/file/94F6C309-D83C-4982-99DB682A42B0ABA0_source.jpg?w=590&h=800&3CC992B4-0893-4276-847B101B5677329A");
     background-size: cover;
 }
 
@@ -10,7 +9,7 @@ body {
     margin-right: auto;
     margin-top: 10%;
     margin-bottom: auto;
-    opacity: 0.5;
+    opacity: 0.8;
     padding: 3% 3% 3% 3%;
 }
 
@@ -20,18 +19,17 @@ body {
     padding-right: 3%;
 }
 
-.navbar-nav {
-    /* margin-left: 21%;
-    margin-right: 11%; */
-    margin-left: 5%;
-    margin-right: 3%;
-}
-
-.navbar li {
-    margin-right: 230px;
+#queryKey {
+    margin-right: 1%;
+    border-radius: 3px;
+    width: 50%;
+    font-size: 24px;
+    text-align: center;
+    line-height: 2.8rem;
 }
 
 .hover {
-    text-decoration: underline;
+    text-decoration: none;
+    text-shadow: 2px 2px 5px gray;
     cursor: pointer;
 }

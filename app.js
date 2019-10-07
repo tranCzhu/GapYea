@@ -8,9 +8,21 @@ app.get("/", function(req, res) {
     res.render("search");
 });
 
+// v0.6 as of 10/06/19
+// Updates:
+// 1. refined ui for home/search page, Why GapYea page, and Contact page
+// 2. implementing better ui for search results in process
+// 3. adopted alternating background images from unsplash
+// 4. fixed error when only 1 result is available, redirects to city page for the result
+// TODOs for v0.7:
+// 1. badges for unsplash background images and location tags
+// 2. refined ui for search results and city page
+// 3. enable search beyond country name
+// 4. implementation of more city page functions
+
 // deployment will work if API key is inserted
 
-// Search (v1 only supports search of a country or city)
+// Search (v0.6 only supports search of a country)
 app.get("/results", function(req, res) {
     // req.query not req.body
     var keyword = req.query.keyword;
@@ -20,7 +32,17 @@ app.get("/results", function(req, res) {
     request(url, function(error, response, body) {
         if (!error && res.statusCode == 200) {
             var parsedData = JSON.parse(body);
-            res.render("results", {data: parsedData});
+            console.log(parsedData.length);
+            if (parsedData.length == 1) {
+                var cityPage = "/r/" + parsedData[0]["capital"];
+                res.redirect(cityPage);
+            }
+            else if (parsedData.length > 1) {
+                res.render("results", {data: parsedData});
+            }
+            else {
+                res.send("something went wrong, {$error}");
+            }
         }
         else {
             res.send("something went wrong, {$error}");
@@ -43,8 +65,13 @@ app.get("/r/:city", function(req, res) {
     });
 });
 
+app.get("/why", function(req, res) {
+    res.render("why.ejs");
+});
 
-
+app.get("/contact", function(req, res) {
+    res.render("contact.ejs");
+});
 
 // search autocomplete thru google api: https://developers.google.com/places/web-service/autocomplete
 
@@ -83,8 +110,6 @@ app.get(":continent/countries", function(req, res) {
 // use filter: explore by parts of city
 
 // Allow entry of experiences for parts of city exploration
-
-
 
 
 app.listen(3000, function() {

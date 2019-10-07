@@ -1,0 +1,74 @@
+<% include partials/header %>
+<link rel="stylesheet" href="/css/why.css">
+
+<nav class="navbar navbar-expand-lg bg-transparent">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav ml-auto" style="margin-right: 40px;">
+            <li class="nav-item active">
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn-outline-light" href="/" style="margin-right: 15px;">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn-outline-light" href="/contact">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="jumbotron jumbotron-fluid bg-light">
+    <div class="jum-container">
+        <h1 class="display-6">Why GapYea?</h1>
+        <hr class="my-4">
+        <p class="lead">
+            <div>
+                I have been blessed to be in an academic instutition that offers a myriad of institutional
+                as well as peer support for gap year resources and advice, so as I started considering taking a gap year
+                    a few months ago, I was able to have conversations with and get advice from many upperclassmen and friends who 
+                    have this experience. 
+            </div>
+            <div>
+                However, as I was doing more research online, I found out that there currently aren't many good resources available. Most of the online resources are associated with 
+                gap year programs for profits and are not able to support people to customize their gap years. In addition, while students can talk to their friends and upperclassmen
+                 for information, people who are in school do not have access to those information and advice. Therefore, the idea of creating 
+                this collection of resouces, as well as a space for people considering or currently taking a gap year to communicate, popped up in my mind.
+            </div>
+            <div>
+                I hope everyone is able to access helpful, neutral, and free information during their gap year research, and get support from each other along the journey.
+            </div>
+            <div>
+                Thank you for visiting GapYea!
+            </div>
+            <div style="text-align: right; font-weight: bold;">
+                With &#60;3,
+                <div id="tra">
+                    Tra
+                </div>
+            </div>
+        </p>
+        <!-- like if you like this project -->
+    </div>
+</div>
+
+<script>
+    window.onload = function randomBackground() {
+        var ran = Math.floor(Math.random() * 19) + 1;
+        var ranImg = "url(/imgs/background/" + ran + ".jpg)";
+        document.querySelector("body").style.backgroundImage = ranImg;
+    }
+
+    // var tra = document.querySelector("#tra");
+    // // hover  
+    // tra.addEventListener("mouseover", function(){
+    //     this.classList.add("hover");
+    // });
+    // // unhover
+    // tra.addEventListener("mouseout", function(){
+    //     this.classList.remove("hover");
+    // });
+</script>
+
+<% include partials/footer %>

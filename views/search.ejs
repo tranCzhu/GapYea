@@ -1,63 +1,69 @@
 <% include partials/header %>
-<link rel="stylesheet" href="/css/search.css">
 
-<nav class="navbar navbar-expand-lg bg-transparent">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link btn-outline-light" href="#" style="margin-right: 260px;">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link btn-outline-light" href="#" style="margin-right: 200px; width: 122px;">Why Gap Year?</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link btn-outline-light" href="#">Contact</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+    <link rel="stylesheet" href="/css/search.css">
 
-<div class="jumbotron jumbotron-fluid bg-light">
-    <div class="jum-container">
-        <h1 class="display-4">Take a GapYea!</h1>
-        <p class="lead">... to explore the world's cultures, adventures, and causes.</p>
-        <hr class="my-4">
-        <form action="/results" method="GET">
-            <input type="text" name="keyword" maxlength="40" placeholder="Japan" style="margin-right: 1%; border-radius: 5px;">
-            <button class="btn btn-warning btn-lg" style="height: 38px; line-height: 16px;">GO</button>
-        </form>
-        <div style="line-height: 2;">
-            Try <a href="/continents" style="color: orange;">Continent Exploration</a>,
-        </div>    
-        <div>
-            or... <span id="lucky" style="color: green;">Feeling lucky</span>?
+    <nav class="navbar navbar-expand-lg bg-transparent">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav ml-auto" style="margin-right: 40px;">
+                <li class="nav-item active">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-outline-light" href="/why" style="margin-right: 20px;">Why GapYea?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-outline-light" href="/contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron jumbotron-fluid bg-light">
+        <div class="jum-container">
+            <h1 class="display-4">Take a GapYea!</h1>
+            <p class="lead">... to explore the world's cultures, adventures, and causes.</p>
+            <hr class="my-4">
+            <form action="/results" method="GET">
+                <input type="text" name="keyword" id="queryKey" maxlength="40" placeholder="Japan, Senegal, Egypt...">
+                <button class="btn btn-warning btn-lg" style="height: 6%; line-height: 20px; position: absolute; margin-left: 0.3%;">GO</button>
+            </form>
+            <div style="line-height: 2;">
+                Try <a href="/continents" style="color: orange;">Continent Exploration</a>,
+            </div>    
+            <div>
+                or... <span class="hoverElements" id="lucky" style="color: green;">Feeling lucky</span>?
+            </div>
         </div>
     </div>
-</div>
 
 
-<!-- THIS SCRIPT IS NOT GON WORK -->
-<script>
-    var lucky = document.querySelector("#lucky");
-    // hover  
-    lucky.addEventListener("mouseover", function(){
-        this.classList.add("hover");
-    });
-    // unhover
-    lucky.addEventListener("mouseout", function(){
-        this.classList.remove("hover");
-    });
-    lucky.addEventListener("click", function(){
-        console.log("clicked");
-        var luckyNum = Math.floor(Math.random() * 250);
-        var countryList = "https://restcountries.eu/rest/v2/all";
-        var luckyCity = JSON.parse(body)[luckyNum];
-        console.log(luckyNum);
-        window.location.href = "/r/" + luckyCity;
-    });
-</script>
+    <!-- THIS SCRIPT IS NOT GON WORK -->
+    <script>
+        window.onload = function randomBackground() {
+            var ran = Math.floor(Math.random() * 19) + 1;
+            var ranImg = "url(/imgs/background/" + ran + ".jpg)";
+            document.querySelector("body").style.backgroundImage = ranImg;
+        }
+
+        var lucky = document.querySelector("#lucky");
+        // hover  
+        lucky.addEventListener("mouseover", function(){
+            this.classList.add("hover");
+        });
+        // unhover
+        lucky.addEventListener("mouseout", function(){
+            this.classList.remove("hover");
+        });
+        // feeling lucky
+        lucky.addEventListener("click", function(){
+            var luckyNum = Math.floor(Math.random() * 250);
+            var countryList = "https://restcountries.eu/rest/v2/all";
+            var luckyCity = JSON.parse(body)[luckyNum];
+            console.log(luckyNum);
+            window.location.href = "/r/" + luckyCity;
+        });
+    </script>
 
 <% include partials/footer %>

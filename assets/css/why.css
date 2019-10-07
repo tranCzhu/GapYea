@@ -1,0 +1,32 @@
+body {
+    background-size: cover;
+}
+
+.jumbotron {
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4.4%;
+    margin-bottom: auto;
+    opacity: 0.8;
+    padding: 3% 3% 3% 3%;
+}
+
+.jum-container {
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.display-6 {
+    text-align: center;
+}
+
+.lead {
+    text-align: left;
+}
+
+#tra {
+    color: pink;
+    text-shadow: 2px 2px 2px black;
+}
